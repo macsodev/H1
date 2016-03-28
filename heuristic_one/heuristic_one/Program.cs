@@ -14,8 +14,15 @@ namespace heuristic_one
             Alg a1 = new Alg();
             List<Coords> list1 = new List<Coords>();
 
+            //test params
             a1.line(0, 0, 34, 25, list1);
 
+            //Larger window
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            
+            foreach (var item in list1) {
+                Console.WriteLine("X:" + item.GetX()+" Y:"+item.GetY());
+            }
         }
    
    }
