@@ -15,11 +15,13 @@ namespace heuristic_one
             List<Coords> list1 = new List<Coords>();
 
             //test params
-            a1.line(0, 0, 34, 25, list1);
+            a1.line(0, 0, 58, 25, list1);
 
             //Larger window
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            
+
+
+            Console.Write("\n");
             foreach (var item in list1) {
                 Console.WriteLine("X:" + item.GetX()+" Y:"+item.GetY());
             }
