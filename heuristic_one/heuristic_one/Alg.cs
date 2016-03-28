@@ -9,8 +9,10 @@ namespace heuristic_one
     class Alg
     {
 
-        public void line(int x, int y, int x2, int y2)
+        public void line(int x, int y, int x2, int y2, List<Coords> list)
         {
+            //x and y represents the starting postition of the line
+            //x2 and y2 represents the ending postition of the line
             int w = x2 - x;
             int h = y2 - y;
             int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
@@ -31,6 +33,7 @@ namespace heuristic_one
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write("x");
+                list.Add(new Coords(x, y));
 
                 numerator += shortest;
                 if (!(numerator < longest))

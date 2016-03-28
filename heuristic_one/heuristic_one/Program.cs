@@ -12,11 +12,11 @@ namespace heuristic_one
         {
             //kezdjunk neki :) 
             Alg a1 = new Alg();
+            List<Coords> list1 = new List<Coords>();
 
-            a1.line(0, 0, 12, 25);
+            a1.line(0, 0, 34, 25, list1);
 
         }
    
-
-    }
+   }
 }
