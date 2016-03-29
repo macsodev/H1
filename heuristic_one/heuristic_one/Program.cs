@@ -15,16 +15,19 @@ namespace heuristic_one
             List<Coords> list1 = new List<Coords>();
 
             //test params
-            a1.line(0, 0, 39, 14, list1);
+            a1.line(30, 20, 0, 0, list1);
 
             //Larger window
-            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            //Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            //Console.SetWindowPosition(0, 0);
 
-
+            Console.SetCursorPosition(0, 20);
             Console.WriteLine("\nBejárt pontok:\n----------------");
             foreach (var item in list1) {
                 Console.WriteLine("X:" + item.GetX()+" Y:"+item.GetY());
             }
+
+            Console.Read();
         }
    
    }
