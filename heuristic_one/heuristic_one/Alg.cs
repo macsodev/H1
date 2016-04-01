@@ -35,8 +35,9 @@ namespace heuristic_one
             for (int i = 0; i <= longest; i++)
             {
                 Console.SetCursorPosition(x, y);
-                if((x==xOriginal && y==yOriginal) || (x == x2 && y == y2)) Console.Write("0");
-                else Console.Write("X");
+                if((x==xOriginal && y==yOriginal)) Console.Write("K");
+                else if (x == x2 && y == y2) Console.Write("V");
+                else Console.Write("x");
                 list.Add(new Coords(x, y));
 
                 numerator += shortest;
