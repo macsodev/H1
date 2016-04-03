@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Alg.cs" />
     <Compile Include="Coords.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -11,11 +11,10 @@ namespace heuristic_one
         static void Main(string[] args)
         {
             //kezdjunk neki :) 
-            Alg a1 = new Alg();
             List<Coords> list1 = new List<Coords>();
 
             //test params
-            a1.line(30, 20, 0, 0, list1);
+            Alg.line(30, 20, 0, 0, list1);
 
             //Larger window
             //Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);

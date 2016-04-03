@@ -9,7 +9,7 @@ namespace heuristic_one
     class Alg
     {
 
-        public void line(int x, int y, int x2, int y2, List<Coords> list)
+        public static void line(int x, int y, int x2, int y2, List<Coords> list)
         {
             //x and y represents the starting postition of the line
             //x2 and y2 represents the ending postition of the line
