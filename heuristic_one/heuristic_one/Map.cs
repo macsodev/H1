@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;   // List
 using System.IO;    // StreamReader, IOException, SeekOrigin
-using System.Linq;
-using System.Text;
+using System.Linq;  // ElementAt
+using System.Text;  // StringBuilder
 using System.Threading.Tasks;
 
 namespace heuristic_one
@@ -10,8 +10,8 @@ namespace heuristic_one
     class Map
     {
         private int[,] Matrix;
-        private int Empty;      // Csak teszteléshez
-        private int Barrirer;   // Csak teszteléshez
+        private int Empty;      // Test only
+        private int Barrirer;   // Test only
         //private Way     W;
 
         public Map(int Empty, int Barrirer)
@@ -20,17 +20,17 @@ namespace heuristic_one
             this.Barrirer = Barrirer;
         }
 
-        // A megadott nevű pontosvesszővel elválasztott csv fájlból olvas be adatokat.
+        // Reads data from CSV file with the specified name
         public bool ReadFromFile(String FileName)
         {
-            StreamReader sr;   // Változó a fájl olvasásához
-            string line;       // Változó egy sor beolvasásához
-            int lines = 1;     // A csv sorainak száma
-            int colunms = 1;   // A csv oszlopainak száma
-            int i = 0;         // Ciklusváltozó
-            int j;             // Ciklusváltozó
+            StreamReader sr;   // Variable to read from file
+            string line;       // A line of the file
+            int lines = 1;     // Number of lines in CSV
+            int colunms = 1;   // Number of columns in CSV
+            int i = 0;         // Index variable
+            int j;             // Index variable
 
-            // Fájl megnyitása
+            // Opening file
             try
             {
                 sr = new StreamReader(FileName);
@@ -40,20 +40,18 @@ namespace heuristic_one
                 return false;
             }
 
-            // Oszlopok és sorok számlálása
+            // Columns and rows count
             line = sr.ReadLine();
-            // Az első sorban megszámolja a pontosvesszőket.
             while (i < line.Length) if (line[i++] == ';') ++colunms;
-            // A második sortól kezdve megszámolja a sorokat.
             while ((line = sr.ReadLine()) != null) ++lines;
 
-            // Vissza a fájl elejére
+            // Rewind
             sr.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            // Helyfoglalás a térkép mátrixához
+            // Allocating memory
             Matrix = new int[lines, colunms];
 
-            // Adatok beolvasása a mátrixba
+            // Reading data to matrix
             i = 0;
             line = sr.ReadLine();
             while (i < lines)
@@ -61,15 +59,10 @@ namespace heuristic_one
                 j = 0;
                 while (j < colunms)
                 {
-                    // Adatok beolvasása a ;-k átugrásával
                     if (line[j * 2] == '0')
-                    {
                         Matrix[i, j] = Empty;
-                    }
                     else
-                    {
                         Matrix[i, j] = Barrirer;
-                    }
                     ++j;
                 }
                 ++i;
@@ -90,12 +83,12 @@ namespace heuristic_one
             return Matrix.GetLength(0);
         }
 
-        // Vonal rajzolása két pont között amíg akadályba nem ütközik
+        // Draw a line between two points until an obstacle
         public void PrintLine(Coords Starting_point, Coords Endpoint)
         {
             List<Coords> Line = new List<Coords>();
 
-            // A vonal pontjainak megállapítása
+            // Finding the points of the line
             Alg.line(
                 Starting_point.GetX(),
                 Starting_point.GetY(),
@@ -104,7 +97,7 @@ namespace heuristic_one
                 Line
             );
 
-            // Rajzoláshoz
+            // Drawing
             int x = Line.ElementAt(0).GetX();
             int y = Line.ElementAt(0).GetY();
             for (int i = 1; i < Line.Count && Matrix[y, x] == Empty; ++i)
